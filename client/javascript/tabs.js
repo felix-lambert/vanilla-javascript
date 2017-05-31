@@ -4,16 +4,16 @@
   'use strict';
 
   exports.initialize = function initialize(options) {
-		const tabs = options.tabs
-		const content = options.content
-		const defaultTab = options.defaultTab
-		const activeTabClass = options.activeTabClass
-		const hiddenContentClass = options.hiddenContentClass
-
-    showTab(defaultTab, tabs, content, hiddenContentClass, activeTabClass)
+    const defaultTab = options.defaultTab
+    
+    showTab(defaultTab, options)
 	}
 
-  function showTab(tabToShow, tabs, content, hiddenContentClass, activeTabClass) {
+  function showTab(tabToShow, options) {
+    const tabs = options.tabs
+		const content = options.content
+		const activeTabClass = options.activeTabClass
+		const hiddenContentClass = options.hiddenContentClass
     const activeIndex = findIndexOfDefaultElement(tabs, tabToShow)
     
     console.log(activeIndex)
