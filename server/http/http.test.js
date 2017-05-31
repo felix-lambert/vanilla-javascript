@@ -10,35 +10,36 @@ describe('server', () => {
   describe('#http responses', function () {
 
     it('should return 200 when we are at the root of the repository', (done) => {
-      http.get('http://localhost:8001', (res) => {
+      http.get('http://localhost:8002', (res) => {
+        console.log('get file type')
         expect(res.statusCode).to.equal(200)
         done()
       })
     })
 
     it('should return 404 when it\'s the wrong file that is rendered', (done) => {  
-      http.get('http://localhost:8001/wrongFile', (res) => {
+      http.get('http://localhost:8002/wrongFile', (res) => {
         expect(res.statusCode).to.equal(404)
         done()
       })
     })
 
     it('should return 200 when it\'s a css file that is rendered', (done) => {      
-      http.get('http://localhost:8001/app.css', (res) => {
+      http.get('http://localhost:8002/app.css', (res) => {
         expect(res.statusCode).to.equal(200)
         done()
       })
     })
 
     it('should return 404 when there is no js file rendered', (done) => {      
-      http.get('http://localhost:8001/app.js', (res) => {
+      http.get('http://localhost:8002/app.js', (res) => {
         expect(res.statusCode).to.equal(404)
         done()
       })
     })
 
     it('should return 200 when it\'s a js file that is rendered', (done) => {      
-      http.get('http://localhost:8001/javascript/app.js', (res) => {
+      http.get('http://localhost:8002/javascript/app.js', (res) => {
         expect(res.statusCode).to.equal(200)
         done()
       })

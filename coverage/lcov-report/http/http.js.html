@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for server/http.test.js</title>
+    <title>Code coverage report for http/http.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">all files</a> / <a href="index.html">server/</a> http.test.js
+      <a href="../index.html">all files</a> / <a href="index.html">http/</a> http.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>29/29</span>
+        <span class='fraction'>32/32</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>29/29</span>
+        <span class='fraction'>32/32</span>
       </div>
     </div>
   </div>
@@ -93,49 +93,46 @@
 48
 49
 50
-51</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+51
+52</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,63 +140,69 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const server = require('./http')
-const http = require('http');
-const expect = require("chai").expect
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const http = require('http')
+const fs = require('fs')
+const getExtension = require('../lib/path')
 &nbsp;
-describe('server', () =&gt; {
-  before(() =&gt; {
-    server.listen(8002)
+function getPathFromUrl(url) {
+  let filePath = './client' + url
+  if (filePath == './client/')
+    filePath = './client/index.html'
+  return filePath
+}
+&nbsp;
+function getFileTypeUsingExtensionName(extname) {
+  let contentType = 'text/html'
+  switch (extname) {
+    case '.js':
+      contentType = 'text/javascript'
+      break;
+    case '.css':
+      contentType = 'text/css'
+      break;
+  }
+  return contentType
+}
+&nbsp;
+const server = http.createServer((request, response) =&gt; {
+  console.log('inside http')
+  const filePath = getPathFromUrl(request.url)
+  const extname = getExtension(filePath)
+  const contentType = getFileTypeUsingExtensionName(extname)
+&nbsp;
+  fs.readFile(filePath, (error, content) =&gt; {
+    if (error) {
+      fs.readFile('./client/404.html', function(error, content) {
+        response.writeHead(404, { 'Content-Type': contentType })
+        response.end(content, 'utf-8')
+      })
+    } else {
+      response.writeHead(200, { 'Content-Type': contentType })
+      response.end(content, 'utf-8')
+    }
   })
+})
 &nbsp;
-  describe('#http responses', function () {
+exports.listen = function (port) {
+  server.listen(port)
+}
 &nbsp;
-    it('should return 200 when we are at the root of the repository', (done) =&gt; {
-      http.get('http://localhost:8001', (res) =&gt; {
-        expect(res.statusCode).to.equal(200)
-        done()
-      })
-    })
+exports.close = function () {
+  server.close()
+}
 &nbsp;
-    it('should return 404 when it\'s the wrong file that is rendered', (done) =&gt; {  
-      http.get('http://localhost:8001/wrongFile', (res) =&gt; {
-        expect(res.statusCode).to.equal(404)
-        done()
-      })
-    })
-&nbsp;
-    it('should return 200 when it\'s a css file that is rendered', (done) =&gt; {      
-      http.get('http://localhost:8001/app.css', (res) =&gt; {
-        expect(res.statusCode).to.equal(200)
-        done()
-      })
-    })
-&nbsp;
-    it('should return 404 when there is no js file rendered', (done) =&gt; {      
-      http.get('http://localhost:8001/app.js', (res) =&gt; {
-        expect(res.statusCode).to.equal(404)
-        done()
-      })
-    })
-&nbsp;
-    it('should return 200 when it\'s a js file that is rendered', (done) =&gt; {      
-      http.get('http://localhost:8001/javascript/app.js', (res) =&gt; {
-        expect(res.statusCode).to.equal(200)
-        done()
-      })
-    })
-  })
-&nbsp;
-  after(() =&gt; {
-    server.close()
-  });
-});</pre></td></tr>
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 31 2017 17:01:43 GMT+0200 (CEST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed May 31 2017 17:20:23 GMT+0200 (CEST)
 </div>
 </div>
 <script src="../prettify.js"></script>

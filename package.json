@@ -2,7 +2,7 @@
   "name": "simple-test-server",
   "version": "0.0.1",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --watch ./**/*.test.js",
+    "test": "./node_modules/mocha/bin/mocha --watch ./server/**/*.test.js",
     "start": "node index.js",
     "cover": "./node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- ./server/**/*.js",
     "karma_start": "./node_modules/.bin/karma start",

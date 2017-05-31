@@ -1,6 +1,6 @@
 const http = require('http')
 const fs = require('fs')
-const getExtension = require('./lib/path')
+const getExtension = require('../lib/path')
 
 function getPathFromUrl(url) {
   let filePath = './client' + url
@@ -23,6 +23,7 @@ function getFileTypeUsingExtensionName(extname) {
 }
 
 const server = http.createServer((request, response) => {
+  console.log('inside http')
   const filePath = getPathFromUrl(request.url)
   const extname = getExtension(filePath)
   const contentType = getFileTypeUsingExtensionName(extname)

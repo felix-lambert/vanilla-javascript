@@ -5,19 +5,35 @@
 
   exports.initialize = function initialize(options) {
     
+    handleClicks(options)
     showTab(options.defaultTab, options)
 	}
 
+  function handleClicks(options) {
+    options.tabs.map((element) => {
+      element.addEventListener('click', function(event) {
+        showTab(event.target, options)
+      })
+    })
+  }
+
   function showTab(tabToShow, options) {
     const activeIndex = findElementIndex(options.tabs, tabToShow)
-    const defaultContent = options.content[activeIndex]
+    const contentToShow = options.content[activeIndex]
+
+
+    options.tabs.map((element) => {
+      element.classList.remove(options.activeTabClass)
+    })
+
+    tabToShow.classList.add(options.activeTabClass)
 
     options.content.map((element) => {
       element.classList.add(options.hiddenContentClass)
     })
 
-    defaultContent.classList.remove(options.hiddenContentClass)
-    tabToShow.classList.add(options.activeTabClass)
+    contentToShow.classList.remove(options.hiddenContentClass)
+    
   }
 
 	function findElementIndex(contentTabs, defaultContentTab) {
