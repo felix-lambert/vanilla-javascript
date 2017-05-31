@@ -15,8 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'client/javascript/**/*.js',
-      'client/vendor/chai.js'
+      'client/**/*.js'
     ],
 
 
@@ -30,8 +29,7 @@ module.exports = function(config) {
     reporters: ['progress'],
 
     preprocessors: {
-      'client/javascript/**/*.js': ['commonjs'],
-      'client/vendor/chai.js': ['commonjs']
+      'client/**/*.js': ['commonjs']
     },
 
 

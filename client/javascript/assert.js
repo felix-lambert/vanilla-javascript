@@ -3,7 +3,7 @@
 (function() {
 	"use strict";
 
-	var assert = require("../vendor/chai.js").assert;
+	const assert = require("../vendor/chai.js").assert;
 
 	module.exports = assert;
 

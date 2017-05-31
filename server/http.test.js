@@ -4,7 +4,7 @@ const expect = require("chai").expect
 
 describe('server', () => {
   before(() => {
-    server.listen(8001)
+    server.listen(8002)
   })
 
   describe('#http responses', function () {

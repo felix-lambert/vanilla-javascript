@@ -1,4 +1,4 @@
-var http = require('http');
+const http = require('http')
 const fs = require('fs')
 const getExtension = require('./lib/path')
 
@@ -22,7 +22,7 @@ function getFileTypeUsingExtensionName(extname) {
   return contentType
 }
 
-this.server = http.createServer((request, response) => {
+const server = http.createServer((request, response) => {
   const filePath = getPathFromUrl(request.url)
   const extname = getExtension(filePath)
   const contentType = getFileTypeUsingExtensionName(extname)
@@ -30,21 +30,21 @@ this.server = http.createServer((request, response) => {
   fs.readFile(filePath, (error, content) => {
     if (error) {
       fs.readFile('./client/404.html', function(error, content) {
-        response.writeHead(404, { 'Content-Type': contentType });
+        response.writeHead(404, { 'Content-Type': contentType })
         response.end(content, 'utf-8')
       })
     } else {
-      response.writeHead(200, { 'Content-Type': contentType });
-      response.end(content, 'utf-8');
+      response.writeHead(200, { 'Content-Type': contentType })
+      response.end(content, 'utf-8')
     }
   })
 })
 
-exports.listen = function () {
-  this.server.listen.apply(this.server, arguments);
+exports.listen = function (port) {
+  server.listen(port)
 }
 
-exports.close = function (callback) {
-  this.server.close(callback);
+exports.close = function () {
+  server.close()
 }
 
