@@ -4,31 +4,23 @@
   'use strict';
 
   exports.initialize = function initialize(options) {
-    const defaultTab = options.defaultTab
     
-    showTab(defaultTab, options)
+    showTab(options.defaultTab, options)
 	}
 
   function showTab(tabToShow, options) {
-    const tabs = options.tabs
-		const content = options.content
-		const activeTabClass = options.activeTabClass
-		const hiddenContentClass = options.hiddenContentClass
-    const activeIndex = findIndexOfDefaultElement(tabs, tabToShow)
-    
-    console.log(activeIndex)
-    
-    const defaultContent = content[activeIndex]
+    const activeIndex = findElementIndex(options.tabs, tabToShow)
+    const defaultContent = options.content[activeIndex]
 
-    content.map((element) => {
-      element.classList.add(hiddenContentClass)
+    options.content.map((element) => {
+      element.classList.add(options.hiddenContentClass)
     })
 
-    defaultContent.classList.remove(hiddenContentClass)
-    tabToShow.classList.add(activeTabClass)
+    defaultContent.classList.remove(options.hiddenContentClass)
+    tabToShow.classList.add(options.activeTabClass)
   }
 
-	function findIndexOfDefaultElement(contentTabs, defaultContentTab) {
+	function findElementIndex(contentTabs, defaultContentTab) {
 		for (let i = 0; i < contentTabs.length; i++) {
 			if (contentTabs[i] === defaultContentTab) return i
 		}
