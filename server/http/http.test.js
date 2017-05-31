@@ -50,6 +50,4 @@ describe('server', () => {
   })
 })
 
-  function assertGoodStatusCode(statusCode, expectedStatusCode) {
-    assert.equal(statusCode, expectedStatusCode, 'the status code should be correct')
-  }
+assertGoodStatusCode = (statusCode, expectedStatusCode) => assert.equal(statusCode, expectedStatusCode, 'the status code should be correct')

@@ -2,14 +2,14 @@ const http = require('http')
 const fs = require('fs')
 const getExtension = require('../lib/path')
 
-function getPathFromUrl(url) {
+getPathFromUrl = (url) => {
   let filePath = './client' + url
   if (filePath == './client/')
     filePath = './client/index.html'
   return filePath
 }
 
-function getFileTypeUsingExtensionName(extensionName) {
+getFileTypeUsingExtensionName = (extensionName) => {
   let fileContentType = 'text/html'
   switch (extensionName) {
     case '.js':
@@ -40,11 +40,6 @@ const server = http.createServer((request, response) => {
   })
 })
 
-exports.listen = function (port) {
-  server.listen(port)
-}
+exports.listen = (port) => server.listen(port)
 
-exports.close = function () {
-  server.close()
-}
-
+exports.close = () => server.close()
