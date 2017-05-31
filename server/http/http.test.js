@@ -1,6 +1,6 @@
 const server = require('./http')
 const http = require('http');
-const expect = require("chai").expect
+const assert = require('chai').assert
 
 describe('server', () => {
   before(() => {
@@ -11,36 +11,35 @@ describe('server', () => {
 
     it('should return 200 when we are at the root of the repository', (done) => {
       http.get('http://localhost:8002', (res) => {
-        console.log('get file type')
-        expect(res.statusCode).to.equal(200)
+        assertGoodStatusCode(res.statusCode, 200)
         done()
       })
     })
 
     it('should return 404 when it\'s the wrong file that is rendered', (done) => {  
       http.get('http://localhost:8002/wrongFile', (res) => {
-        expect(res.statusCode).to.equal(404)
+        assertGoodStatusCode(res.statusCode, 404)
         done()
       })
     })
 
     it('should return 200 when it\'s a css file that is rendered', (done) => {      
       http.get('http://localhost:8002/app.css', (res) => {
-        expect(res.statusCode).to.equal(200)
+        assertGoodStatusCode(res.statusCode, 200)
         done()
       })
     })
 
     it('should return 404 when there is no js file rendered', (done) => {      
       http.get('http://localhost:8002/app.js', (res) => {
-        expect(res.statusCode).to.equal(404)
+        assertGoodStatusCode(res.statusCode, 404)
         done()
       })
     })
 
     it('should return 200 when it\'s a js file that is rendered', (done) => {      
       http.get('http://localhost:8002/javascript/app.js', (res) => {
-        expect(res.statusCode).to.equal(200)
+        assertGoodStatusCode(res.statusCode, 200)
         done()
       })
     })
@@ -48,5 +47,9 @@ describe('server', () => {
 
   after(() => {
     server.close()
-  });
-});
+  })
+})
+
+  function assertGoodStatusCode(statusCode, expectedStatusCode) {
+    assert.equal(statusCode, expectedStatusCode, 'the status code should be correct')
+  }

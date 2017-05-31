@@ -1,15 +1,13 @@
 
-
 (function() {
   'use strict';
 
-  exports.initialize = function initialize(options) {
-    
-    handleClicks(options)
+  exports.initialize = function initialize(options) { 
+    handleClicksOnTab(options)
     showTab(options.defaultTab, options)
 	}
 
-  function handleClicks(options) {
+  function handleClicksOnTab(options) {
     options.tabs.map((element) => {
       element.addEventListener('click', function(event) {
         showTab(event.target, options)
@@ -18,22 +16,20 @@
   }
 
   function showTab(tabToShow, options) {
-    const activeIndex = findElementIndex(options.tabs, tabToShow)
-    const contentToShow = options.content[activeIndex]
+    const activeTabIndex = findElementIndex(options.tabs, tabToShow)
+    const contentToShow = options.content[activeTabIndex]
 
-
-    options.tabs.map((element) => {
-      element.classList.remove(options.activeTabClass)
+    options.tabs.map((tabElement) => {
+      tabElement.classList.remove(options.activeTabClass)
     })
 
     tabToShow.classList.add(options.activeTabClass)
 
-    options.content.map((element) => {
-      element.classList.add(options.hiddenContentClass)
+    options.content.map((contentElement) => {
+      contentElement.classList.add(options.hiddenContentClass)
     })
 
-    contentToShow.classList.remove(options.hiddenContentClass)
-    
+    contentToShow.classList.remove(options.hiddenContentClass)    
   }
 
 	function findElementIndex(contentTabs, defaultContentTab) {
@@ -41,5 +37,4 @@
 			if (contentTabs[i] === defaultContentTab) return i
 		}
   }
-
 }())

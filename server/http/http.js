@@ -9,33 +9,32 @@ function getPathFromUrl(url) {
   return filePath
 }
 
-function getFileTypeUsingExtensionName(extname) {
-  let contentType = 'text/html'
-  switch (extname) {
+function getFileTypeUsingExtensionName(extensionName) {
+  let fileContentType = 'text/html'
+  switch (extensionName) {
     case '.js':
-      contentType = 'text/javascript'
+      fileContentType = 'text/javascript'
       break;
     case '.css':
-      contentType = 'text/css'
+      fileContentType = 'text/css'
       break;
   }
-  return contentType
+  return fileContentType
 }
 
 const server = http.createServer((request, response) => {
-  console.log('inside http')
   const filePath = getPathFromUrl(request.url)
-  const extname = getExtension(filePath)
-  const contentType = getFileTypeUsingExtensionName(extname)
+  const extensionName = getExtension(filePath)
+  const fileContentType = getFileTypeUsingExtensionName(extensionName)
 
   fs.readFile(filePath, (error, content) => {
     if (error) {
       fs.readFile('./client/404.html', function(error, content) {
-        response.writeHead(404, { 'Content-Type': contentType })
+        response.writeHead(404, { 'Content-Type': fileContentType })
         response.end(content, 'utf-8')
       })
     } else {
-      response.writeHead(200, { 'Content-Type': contentType })
+      response.writeHead(200, { 'Content-Type': fileContentType })
       response.end(content, 'utf-8')
     }
   })

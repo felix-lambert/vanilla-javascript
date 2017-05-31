@@ -1,12 +1,11 @@
 (function() {
 	"use strict"
   
-const assert = require('./assert')
-const tabs = require('./tabs')
+  const assert = require('./assert')
+  const tabs = require('./tabs')
 
   describe("Tabs", () => {
 
-    const IRRELEVANT = "irrelevant"
     const HIDDEN_CONTENT = "hideClass"
     const ACTIVE_TAB = "activeTab"
 
@@ -25,20 +24,19 @@ const tabs = require('./tabs')
 			const defaultTab = createTab()
 
 			const content1 = createTabContent()
-			const defaultContent = createTabContent()
+			const defaultContentToNotHide = createTabContent()
 			const content3 = createTabContent()
 
 			tabs.initialize({
 				tabs: [ createTab(), defaultTab, createTab() ],
-				content: [ content1, defaultContent, content3 ],
+				content: [ content1, defaultContentToNotHide, content3 ],
 				defaultTab: defaultTab,
-				activeTabClass: IRRELEVANT,
 				hiddenContentClass: HIDDEN_CONTENT
 			})
 
-      assertContentHidden(content1, "element 1 should be hidden")
-      assertContentVisible(defaultContent, "default element should not be hidden")
-      assertContentHidden(content3, "element 3 should be hidden")
+      assertContentHidden(content1, "content 1 should be hidden")
+      assertContentVisible(defaultContentToNotHide, "default element should not be hidden")
+      assertContentHidden(content3, "content 3 should be hidden")
 		})
 
 		it("styles the default tab with a class upon initialization", () => {
@@ -52,8 +50,7 @@ const tabs = require('./tabs')
 				tabs: [ tab1, defaultTab, tab3 ],
 				content: [ createTabContent(), defaultContent, createTabContent() ],
 				defaultTab: defaultTab,
-				activeTabClass: ACTIVE_TAB,
-				hiddenContentClass: IRRELEVANT
+				activeTabClass: ACTIVE_TAB
 			})
 
       assertTabInactive(tab1, "tab 1 should be hidden")
@@ -61,7 +58,7 @@ const tabs = require('./tabs')
       assertTabInactive(tab3, "tab 3 should be hidden")
 		})
 
-        it("switches content when tab is clicked", () => {
+    it("switches content when tab is clicked", () => {
       const tab1 = createTab()
 			const tab2 = createTab()
 			const tab3 = createTab()
@@ -96,7 +93,6 @@ const tabs = require('./tabs')
       assertContentHidden(content2, "content 2 should no longer be visible after click")
       assertContentHidden(content1, "content 1 should no longer be visible after click")
       assertTabActive(tab3, "tab 3")
-      // assert.equal(getClasses)
     })
 
     it("preserves existing classes when adding new classes", () => {
@@ -115,13 +111,9 @@ const tabs = require('./tabs')
 				hiddenContentClass: "hiddenContent"
 			})
 
-      assert.equal(getClasses(defaultTab), `existingTabClass ${ACTIVE_TAB}`, "tab should preserve existing classes")
-			assert.equal(getClasses(hiddenContent), "existingContentClass hiddenContent", "content element should preserve existing classes")
+      assert.equal(getClasses(defaultTab), `existingTabClass ${ACTIVE_TAB}`, 'default tab should preserve existing classes')
+			assert.equal(getClasses(hiddenContent), 'existingContentClass hiddenContent', 'content element should preserve existing classes')
 		})
-
-		it("preserves existing classes on the active tab", () => {
-			// TODO
-    })
 
     function assertTabActive(element, message) {
       assert.equal(getClasses(element), ACTIVE_TAB, message)
@@ -146,18 +138,18 @@ const tabs = require('./tabs')
     }
 
     function createTab() {
-      const tab = addElement("div")
+      const tab = addNodeElement("div")
       tab.innerHTML = "tab"
       return tab
     }
 
     function createTabContent() {
-      const tab = addElement("div")
+      const tab = addNodeElement("div")
       tab.innerHTML = "content"
       return tab
     }
 
-    function addElement(tagName) {
+    function addNodeElement(tagName) {
       const element = document.createElement(tagName)
       container.appendChild(element)
       return element
@@ -168,5 +160,4 @@ const tabs = require('./tabs')
     }
 
   })
-  
 }())
