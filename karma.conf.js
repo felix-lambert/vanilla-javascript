@@ -10,13 +10,13 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'browserify'],
+    frameworks: ['mocha', 'commonjs'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'client/*.js',
-      'client/**/*.spec.js'
+      'client/javascript/**/*.js',
+      'client/vendor/chai.js'
     ],
 
 
@@ -30,9 +30,9 @@ module.exports = function(config) {
     reporters: ['progress'],
 
     preprocessors: {
-      'client/**/*.spec.js': ['browserify']
+      'client/javascript/**/*.js': ['commonjs'],
+      'client/vendor/chai.js': ['commonjs']
     },
-    
 
 
     // web server port

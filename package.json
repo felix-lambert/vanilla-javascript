@@ -2,17 +2,18 @@
   "name": "simple-test-server",
   "version": "0.0.1",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha ./**/*.test.js",
+    "test": "./node_modules/mocha/bin/mocha --watch ./**/*.test.js",
     "start": "node index.js",
     "cover": "./node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- ./server/**/*.js",
     "karma_start": "./node_modules/.bin/karma start",
     "karma_run": "./node_modules/.bin/karma run",
-    "browserify": "./node_modules/.bin/browserify app.js -o build/bundle.js"
+    "browserify": "./node_modules/.bin/browserify ./client/javascript/app.js -o ./client/build/bundle.js"
   },
   "license": "MIT",
   "devDependencies": {
     "browserify": "^14.4.0",
     "chai": "^4.0.0",
+    "commonjs": "0.0.1",
     "istanbul": "^0.4.5",
     "karma": "^1.7.0",
     "karma-browserify": "^5.1.1",
@@ -20,7 +21,6 @@
     "karma-firefox-launcher": "^1.0.1",
     "karma-mocha": "^1.3.0",
     "karma-opera-launcher": "^1.0.0",
-    "karma-requirejs": "^1.1.0",
     "mocha": "^3.4.2",
     "watchify": "^3.9.0"
   }
