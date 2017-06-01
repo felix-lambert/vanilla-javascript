@@ -7,7 +7,7 @@
     "cover": "./node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- ./server/**/*.js",
     "karma_start": "./node_modules/.bin/karma start",
     "karma_run": "./node_modules/.bin/karma run",
-    "browserify": "./node_modules/.bin/browserify ./client/app.js -o ./client/build/bundle.js"
+    "browserify": "./node_modules/.bin/watchify ./client/app.js -o ./client/build/bundle.js"
   },
   "license": "MIT",
   "devDependencies": {
