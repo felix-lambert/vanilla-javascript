@@ -7,8 +7,7 @@ describe('server', () => {
     server.listen(8002)
   })
 
-  describe('#http responses', function () {
-
+  describe('#http responses', () => {
     it('should return 200 when we are at the root of the repository', (done) => {
       http.get('http://localhost:8002', (res) => {
         assertGoodStatusCode(res.statusCode, 200)
@@ -50,4 +49,4 @@ describe('server', () => {
   })
 })
 
-assertGoodStatusCode = (statusCode, expectedStatusCode) => assert.equal(statusCode, expectedStatusCode, 'the status code should be correct')
+const assertGoodStatusCode = (statusCode, expectedStatusCode) => assert.equal(statusCode, expectedStatusCode, 'the status code should be correct')
