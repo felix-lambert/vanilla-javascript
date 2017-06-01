@@ -7,7 +7,7 @@
     "cover": "./node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- ./server/**/*.js",
     "karma_start": "./node_modules/.bin/karma start",
     "karma_run": "./node_modules/.bin/karma run",
-    "browserify": "./node_modules/.bin/browserify ./client/javascript/app.js -o ./client/build/bundle.js"
+    "browserify": "./node_modules/.bin/browserify ./client/app.js -o ./client/build/bundle.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -18,6 +18,7 @@
     "karma": "^1.7.0",
     "karma-browserify": "^5.1.1",
     "karma-chrome-launcher": "^2.1.1",
+    "karma-commonjs": "^1.0.0",
     "karma-firefox-launcher": "^1.0.1",
     "karma-mocha": "^1.3.0",
     "karma-opera-launcher": "^1.0.0",

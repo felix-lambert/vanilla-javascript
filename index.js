@@ -1,5 +1,5 @@
-const port = 8001
-const server = require('./server/http')
+const port = 8001;
+const server = require('./server/http/http')
 
 server.listen(port)
 

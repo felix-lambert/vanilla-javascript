@@ -115,6 +115,25 @@
 			assert.equal(getClasses(hiddenContent), 'existingContentClass hiddenContent', 'content element should preserve existing classes')
 		})
 
+    it("handles clicks on sub-elements within tabs", () => {
+			const defaultTab = createTab()
+
+      const complexTab = addNodeElement('div')
+      complexTab.innerHTML = "<a id='link'>link</a>"
+      
+      const link = document.getElementById('link')
+
+      tabs.initialize({
+        tabs: [ defaultTab, complexTab ],
+        content: [ createTabContent(), createTabContent() ],
+        defaultTab: defaultTab,
+        activeTabClass: ACTIVE_TAB
+      })
+
+      link.click()
+      assertTabActive(complexTab)
+		})
+
     function assertTabActive(element, message) {
       assert.equal(getClasses(element), ACTIVE_TAB, message)
     }
