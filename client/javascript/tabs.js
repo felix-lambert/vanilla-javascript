@@ -27,7 +27,7 @@
     options.content.map((contentElement) => {
       contentElement.classList.add(options.hiddenContentClass)
     })
-    contentToShow.classList.remove(options.hiddenContentClass)    
+    contentToShow.classList.remove(options.hiddenContentClass)
   }
 
   function findElementIndex (contentTabs, defaultContentTab) {
