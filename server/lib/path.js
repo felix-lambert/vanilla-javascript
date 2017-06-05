@@ -1,6 +1,6 @@
-function getExtension(filename) {
-  var i = filename.lastIndexOf('.')
-  return (i < 0) ? '' : filename.substr(i)
+const getExtension = filename => {
+  let i = filename.lastIndexOf('.')
+  return (i < 0) ? -1 : filename.substr(i)
 }
 
 module.exports = getExtension

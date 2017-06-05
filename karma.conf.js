@@ -3,7 +3,6 @@
 
 module.exports = (config) => {
   config.set({
-
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
@@ -23,10 +22,11 @@ module.exports = (config) => {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
     preprocessors: {
-      'client/**/*.js': ['commonjs']
+      'client/**/*.js': ['commonjs'],
+      'client/javascript/**/*.js': ['coverage']
     },
 
     // web server port

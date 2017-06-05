@@ -2,40 +2,53 @@ const http = require('http')
 const fs = require('fs')
 const getExtension = require('../lib/path')
 
-const server = http.createServer((request, response) => {
-  const filePath = getPathFromUrl(request.url)
-  const extensionName = getExtension(filePath)
-  const fileContentType = getFileTypeUsingExtensionName(extensionName)
+let server
 
-  fs.readFile(filePath, (error, content) => {
-    if (error) {
-      fs.readFile('./client/404.html', (err, content) => {
-        if (err) {
-          throw err
-        }
-        response.writeHead(404, { 'Content-Type': fileContentType })
-        response.end(content, 'utf-8')
-      })
-    } else {
-      response.writeHead(200, { 'Content-Type': fileContentType })
-      response.end(content, 'utf-8')
-    }
-  })
-})
-
-exports.listen = (port) => server.listen(port)
-
-exports.close = () => server.close()
-
-const getPathFromUrl = (url) => {
-  let filePath = './client' + url
-  if (filePath === './client/') {
-    filePath = './client/index.html'
-  }
-  return filePath
+function renderContent (response, statusCode, fileContentType, renderedData) {
+  response.writeHead(404, { 'Content-Type': fileContentType })
+  response.end(renderedData, 'utf-8')
 }
 
-const getFileTypeUsingExtensionName = (extensionName) => {
+exports.start = (portNumber, fileToServe, fileNotFoundPath) => {
+  if (!portNumber) {
+    throw new Error('port number is required')
+  }
+  server = http.createServer()
+  server.on('request', (request, response) => {
+    let filePath
+    console.log(`file to serve ${fileToServe}`)
+    if (!fileToServe) {
+      filePath = './client' + request.url
+      if (filePath === './client') {
+        filePath = './client/index.html'
+      }
+    } else {
+      filePath = fileToServe
+    }
+    const extensionName = getExtension(filePath)
+    const fileContentType = getFileTypeUsingExtensionName(extensionName)
+    console.log(filePath)
+    fs.readFile(filePath, (error, data) => {
+      if (error) {
+        fs.readFile(fileNotFoundPath, (err, content) => {
+          if (err) {
+            renderContent(response, 404, fileContentType, `Page not found`)
+          }
+          response.writeHead(404, { 'Content-Type': fileContentType })
+          response.end()
+        })
+      } else {
+        response.writeHead(200, { 'Content-Type': fileContentType })
+        response.end(data)
+      }
+    })
+  })
+  server.listen(portNumber)
+}
+
+exports.stop = callback => server.close(callback)
+
+const getFileTypeUsingExtensionName = extensionName => {
   let fileContentType = 'text/html'
   switch (extensionName) {
     case '.js':
