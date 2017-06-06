@@ -16,10 +16,9 @@ exports.start = (portNumber, fileToServe, fileNotFoundPath) => {
   server = http.createServer()
   server.on('request', (request, response) => {
     let filePath
-    console.log(`file to serve ${fileToServe}`)
     if (!fileToServe) {
       filePath = './client' + request.url
-      if (filePath === './client') {
+      if (filePath === './client/') {
         filePath = './client/index.html'
       }
     } else {
@@ -27,7 +26,6 @@ exports.start = (portNumber, fileToServe, fileNotFoundPath) => {
     }
     const extensionName = getExtension(filePath)
     const fileContentType = getFileTypeUsingExtensionName(extensionName)
-    console.log(filePath)
     fs.readFile(filePath, (error, data) => {
       if (error) {
         fs.readFile(fileNotFoundPath, (err, content) => {

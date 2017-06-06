@@ -12,7 +12,8 @@ module.exports = (config) => {
 
     // list of files / patterns to load in the browser
     files: [
-      'client/**/*.js'
+      'client/**/*.js',
+      'client/app.css'
     ],
 
     // list of files to exclude

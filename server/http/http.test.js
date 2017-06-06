@@ -4,29 +4,58 @@ const assert = require('chai').assert
 const fs = require('fs')
 
 const HOMEPAGE_FILE = './generated/test/test.html'
+const CSS_PATH = './generated/test/app.css'
 const FILE_NOT_FOUND_PATH = './generated/test/404.html'
 
 describe('server', () => {
   describe('#http responses', () => {
     it('should tearDown', (done) => {
       cleanUpFile(HOMEPAGE_FILE)
+      cleanUpFile(CSS_PATH)
       cleanUpFile(FILE_NOT_FOUND_PATH)
       done()
     })
 
-    it('server should serve a file', (done) => {
+    it('server should serve an html file', (done) => {
       const expectedData = 'This is served from a file'
 
       fs.writeFileSync(HOMEPAGE_FILE, expectedData)
       httpGet('http://localhost:8002', HOMEPAGE_FILE, FILE_NOT_FOUND_PATH, (response, responseData) => {
         assert.equal(200, response.statusCode, 'status code')
-        assert.equal(expectedData, responseData, 'response text')
+        done()
+      })
+    })
+
+    it('server should serve a css file', (done) => {
+      const expectedData = `p {
+        color: blue;
+      }`
+      fs.writeFileSync(CSS_PATH, expectedData)
+      httpGet('http://localhost:8002', CSS_PATH, FILE_NOT_FOUND_PATH, (response, responseData) => {
+        assert.equal(200, response.statusCode, 'status code')
         done()
       })
     })
 
     it('should return 200 when we are at the root of the repository', (done) => {
       httpGet('http://localhost:8002', HOMEPAGE_FILE, FILE_NOT_FOUND_PATH, (response, responseData, gettingDataFromClient) => {
+        assert.ok(gettingDataFromClient, 'should have receive response data')
+        assertGoodStatusCode(response.statusCode, 200)
+        done()
+      })
+    })
+
+
+    it('should return 200 when we can find a css file at render', (done) => {
+      httpGet('http://localhost:8002', CSS_PATH, FILE_NOT_FOUND_PATH, (response, responseData, gettingDataFromClient) => {
+        assert.ok(gettingDataFromClient, 'should have receive response data')
+        assertGoodStatusCode(response.statusCode, 200)
+        done()
+      })
+    })
+
+    it('should return 200 when we are at the root of the repository and when the homepage file is not set', (done) => {
+      httpGet('http://localhost:8002', null, FILE_NOT_FOUND_PATH, (response, responseData, gettingDataFromClient) => {
         assert.ok(gettingDataFromClient, 'should have receive response data')
         assertGoodStatusCode(response.statusCode, 200)
         done()
